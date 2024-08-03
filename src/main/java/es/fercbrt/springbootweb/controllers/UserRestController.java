@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api")
 public class UserRestController {
@@ -13,5 +15,12 @@ public class UserRestController {
     public UserDto details() {
         User user = new User("Fernando", "Calvino");
         return new UserDto("User Details", user);
+    }
+
+    @GetMapping("/list")
+    public List<User> list() {
+        return List.of(new User("Fernando", "Calvino"),
+                new User("John", "Doe"),
+                new User("Jane", "Doe"));
     }
 }

@@ -13,14 +13,16 @@ import java.util.List;
 public class UserRestController {
     @GetMapping("/details")
     public UserDto details() {
-        User user = new User("Fernando", "Calvino");
+        User user = new User("Fernando", "Calvino", "fernandoCalvino@example.com");
         return new UserDto("User Details", user);
     }
 
     @GetMapping("/list")
-    public List<User> list() {
-        return List.of(new User("Fernando", "Calvino"),
-                new User("John", "Doe"),
-                new User("Jane", "Doe"));
+    public List<UserDto> list() {
+        return List.of(
+                new UserDto("User Details", new User("Fernando", "Calvino", "fernandocalvino@example.com")),
+                new UserDto("User Details", new User("John", "Doe", "johndoe@example.com")),
+                new UserDto("User Details", new User("Jane", "Doe", "janedhoe@example.com"))
+        );
     }
 }

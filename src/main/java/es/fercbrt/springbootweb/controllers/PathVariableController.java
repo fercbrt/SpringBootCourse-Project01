@@ -17,6 +17,8 @@ public class PathVariableController {
     private Long code;
     @Value("#{ ${config.code} + 100 }")
     private Long codePlus100;
+    @Value("#{${config.valuesMap}}")
+    private Map<String, Object> valuesMap;
 
     @GetMapping("/baz/{message}")
     public ParamDto baz(@PathVariable String message) {
@@ -38,6 +40,7 @@ public class PathVariableController {
         return Map.of(
                 "name", name,
                 "code", code,
-                "codePlus100", codePlus100);
+                "codePlus100", codePlus100,
+                "valuesMap", valuesMap);
     }
 }

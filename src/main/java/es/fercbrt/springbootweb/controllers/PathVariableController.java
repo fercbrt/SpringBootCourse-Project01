@@ -2,10 +2,13 @@ package es.fercbrt.springbootweb.controllers;
 
 import es.fercbrt.springbootweb.models.User;
 import es.fercbrt.springbootweb.models.dto.ParamDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("api/var")
@@ -19,6 +22,9 @@ public class PathVariableController {
     private Long codePlus100;
     @Value("#{${config.valuesMap}}")
     private Map<String, Object> valuesMap;
+
+    @Autowired
+    private Environment environment;
 
     @GetMapping("/baz/{message}")
     public ParamDto baz(@PathVariable String message) {
@@ -41,6 +47,7 @@ public class PathVariableController {
                 "name", name,
                 "code", code,
                 "codePlus100", codePlus100,
-                "valuesMap", valuesMap);
+                "valuesMap", valuesMap,
+                "environment_name", Objects.requireNonNull(environment.getProperty("config.name")));
     }
 }

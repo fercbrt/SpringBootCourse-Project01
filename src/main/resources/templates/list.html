@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:text="${title}"></title>
+</head>
+<body>
+    <h1 th:text="${title}"></h1>
+    <div th:if="${users.size() != 0}">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Lastname</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.name}"></td>
+                    <td th:text="${user.getLastname()}"></td>
+                    <td th:text="${user.getEmail()}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:unless="${users}">
+        <h1>No users found</h1>
+    </div>
+</body>
+</html>

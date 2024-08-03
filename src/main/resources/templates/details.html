@@ -10,8 +10,9 @@
 <body>
     <h1 th:text="${title}"></h1>
     <ul>
-        <li th:text="${name}"></li>
-        <li th:text="${lastname}"></li>
+        <!-- Accessing the user object (two ways) -->
+        <li th:text="${user.name}"></li>
+        <li th:text="${user.getLastname()}"></li>
     </ul>
 
 </body>

@@ -16,6 +16,6 @@
         <!-- Conditional rendering -->
         <li th:if="${user.email}" th:text="${user.getEmail()}"></li>
     </ul>
-
+    <a th:href="@{/list}">Back to users</a>
 </body>
 </html>
